@@ -1,0 +1,491 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Royal Star Hotel</title><style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f3ee;
+  color: #222;
+  line-height: 1.6;
+}
+
+header {
+  background: #0b4738;
+  color: white;
+  text-align: center;
+  padding: 55px 20px;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+}
+
+header p {
+  margin-top: 10px;
+  font-size: 1.1rem;
+}
+
+nav {
+  background: #08352b;
+  padding: 14px;
+  text-align: center;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 8px;
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+section {
+  padding: 55px 20px;
+}
+
+h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #0b4738;
+}
+
+/* WELCOME */
+.welcome {
+  text-align: center;
+  max-width: 700px;
+  margin: auto;
+}
+
+.welcome p {
+  font-size: 1.1rem;
+}
+
+/* ROOMS */
+.rooms {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.room {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 18px rgba(0,0,0,0.12);
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.room img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+}
+
+.room h3 {
+  margin: 15px 10px 5px;
+  color: #0b4738;
+}
+
+.room p {
+  padding: 0 10px;
+}
+
+.price {
+  color: #b58b2a;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* RESTAURANT */
+.restaurant {
+  background: #e9e4d7;
+  text-align: center;
+}
+
+.restaurant-image {
+  width: 100%;
+  max-width: 700px;
+  height: 280px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 25px;
+  border-radius: 15px;
+  box-shadow: 0 5px 18px rgba(0,0,0,0.15);
+}
+
+.restaurant p {
+  max-width: 700px;
+  margin: auto;
+  font-size: 1.1rem;
+}
+
+/* SERVICES */
+.services {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 25px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.service {
+  background: white;
+  padding: 30px 20px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 5px 18px rgba(0,0,0,0.12);
+}
+
+.service h3 {
+  font-size: 1.4rem;
+  margin-bottom: 8px;
+}
+
+/* BOOKING FORM */
+#booking {
+  background: #e9e4d7;
+}
+
+#bookingForm {
+  background: white;
+  max-width: 600px;
+  margin: auto;
+  padding: 30px;
+  border-radius: 18px;
+  box-shadow: 0 5px 18px rgba(0,0,0,0.12);
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-top: 15px;
+  margin-bottom: 6px;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 16px;
+  background: white;
+  color: #222;
+}
+
+/* Makes date fields easy to tap on phones */
+input[type="date"] {
+  min-height: 52px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border: 2px solid #b58b2a;
+}
+
+textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+button {
+  width: 100%;
+  margin-top: 25px;
+  padding: 16px;
+  background: #0b4738;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #08352b;
+}
+
+/* CONTACT */
+#contact {
+  background: white;
+  text-align: center;
+}
+
+.contact-info p {
+  margin: 15px 0;
+  font-size: 1.05rem;
+}
+
+.whatsapp {
+  display: inline-block;
+  background: #b58b2a;
+  color: white;
+  text-decoration: none;
+  padding: 16px 25px;
+  border-radius: 10px;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+footer {
+  background: #0b4738;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  header {
+    padding: 45px 15px;
+  }
+
+  header h1 {
+    font-size: 2rem;
+  }
+
+  nav a {
+    display: inline-block;
+    margin: 6px;
+  }
+
+  section {
+    padding: 45px 15px;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  #bookingForm {
+    padding: 22px;
+  }
+
+  .restaurant-image {
+    height: 220px;
+  }
+}
+</style></head><body><header>
+  <h1>ROYAL STAR HOTEL</h1>
+  <p>Comfort • Luxury • Excellence</p>
+  <p>Your perfect stay begins here.</p>
+</header><nav>
+  <a href="#home">Home</a>
+  <a href="#rooms">Rooms</a>
+  <a href="#restaurant">Restaurant</a>
+  <a href="#services">Services</a>
+  <a href="#booking">Book Now</a>
+  <a href="#contact">Contact</a>
+</nav><section id="home">
+  <div class="welcome">
+    <h2>Welcome to Royal Star Hotel</h2>
+    <p>
+      Experience comfort, elegance and exceptional hospitality at Royal Star Hotel.
+      Whether you are travelling for business or relaxation, we are ready to make
+      your stay memorable.
+    </p>
+  </div>
+</section><section id="rooms">
+  <h2>Our Rooms</h2>  <div class="rooms"><div class="room">
+  <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=800&q=80" alt="Standard Room">
+  <h3>Standard Room</h3>
+  <p>Comfortable and affordable accommodation.</p>
+  <p class="price">KSh 3,000 per night</p>
+</div>
+
+<div class="room">
+  <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=800&q=80" alt="Deluxe Room">
+  <h3>Deluxe Room</h3>
+  <p>Extra comfort and elegance for your stay.</p>
+  <p class="price">KSh 5,000 per night</p>
+</div>
+
+<div class="room">
+  <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80" alt="Executive Suite">
+  <h3>Executive Suite</h3>
+  <p>Luxury accommodation with premium comfort.</p>
+  <p class="price">KSh 8,000 per night</p>
+</div>
+
+  </div>
+</section><section id="restaurant" class="restaurant">
+  <h2>Our Restaurant</h2><img class="restaurant-image"
+src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1000&q=80"
+alt="Royal Star Hotel Restaurant">
+
+  <p>
+    Enjoy delicious meals and refreshing drinks prepared with care.
+    Our restaurant offers a comfortable and elegant dining experience
+    for hotel guests and visitors.
+  </p>
+</section><section id="services">
+  <h2>Premium Services</h2>  <div class="services">
+    <div class="service">
+      <h3>🍽️ Dining</h3>
+      <p>Delicious food and drinks.</p>
+    </div><div class="service">
+  <h3>📶 Free Wi-Fi</h3>
+  <p>Fast internet access.</p>
+</div>
+
+<div class="service">
+  <h3>🚗 Parking</h3>
+  <p>Safe and secure parking.</p>
+</div>
+
+<div class="service">
+  <h3>🛎️ Room Service</h3>
+  <p>We are always ready to serve you.</p>
+</div>
+
+  </div>
+</section><section id="booking">
+  <h2>Reserve Your Stay</h2>  <form id="bookingForm"><label for="name">Full Name</label>
+<input type="text" id="name" name="name"
+       placeholder="Enter your full name" required>
+
+<label for="phone">Phone Number</label>
+<input type="tel" id="phone" name="phone"
+       placeholder="+254 700 000 000" required>
+
+<label for="room">Select Room</label>
+<select id="room" name="room" required>
+  <option value="">Choose a room</option>
+  <option>Standard Room - KSh 3,000</option>
+  <option>Deluxe Room - KSh 5,000</option>
+  <option>Executive Suite - KSh 8,000</option>
+</select>
+
+<label for="checkin">Check-in Date</label>
+<input type="date" id="checkin" name="checkin" required>
+
+<label for="checkout">Check-out Date</label>
+<input type="date" id="checkout" name="checkout" required>
+
+<label for="guests">Number of Guests</label>
+<input type="number" id="guests" name="guests"
+       min="1" value="1" required>
+
+<label for="requests">Additional Requests</label>
+<textarea id="requests" name="requests"
+          placeholder="Any special requests?"></textarea>
+
+<button type="submit">SEND BOOKING REQUEST</button>
+
+  </form>
+</section><section id="contact">
+  <h2>CONTACT ROYAL STAR HOTEL</h2>  <div class="contact-info">
+    <p>📍 Location: Your Hotel Location</p>
+    <p>📞 Phone: +254 701920980</p>
+    <p>✉️ Email: info@royalstarhotel.com</p><a class="whatsapp"
+   href="https://wa.me/254701920980"
+   target="_blank">
+   CHAT WITH US ON WHATSAPP
+</a>
+
+  </div>
+</section><footer>
+  <p>© 2026 Royal Star Hotel. All Rights Reserved.</p>
+</footer><script>
+const checkin = document.getElementById("checkin");
+const checkout = document.getElementById("checkout");
+const bookingForm = document.getElementById("bookingForm");
+
+/* Get today's date */
+const now = new Date();
+const today = new Date(
+  now.getFullYear(),
+  now.getMonth(),
+  now.getDate()
+);
+
+const formatDate = (date) => {
+  return date.getFullYear() + "-" +
+    String(date.getMonth() + 1).padStart(2, "0") + "-" +
+    String(date.getDate()).padStart(2, "0");
+};
+
+/* Do not allow past dates */
+checkin.min = formatDate(today);
+checkout.min = formatDate(today);
+
+/* Checkout must be at least one day after check-in */
+checkin.addEventListener("change", function () {
+  if (!checkin.value) return;
+
+  const selectedCheckin = new Date(checkin.value + "T00:00:00");
+  selectedCheckin.setDate(selectedCheckin.getDate() + 1);
+
+  const minimumCheckout = formatDate(selectedCheckin);
+  checkout.min = minimumCheckout;
+
+  if (checkout.value && checkout.value < minimumCheckout) {
+    checkout.value = "";
+  }
+});
+
+/* Booking form */
+bookingForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  const name = document.getElementById("name").value.trim();
+
+  if (!name) {
+    alert("Please enter your full name.");
+    return;
+  }
+
+  if (!checkin.value || !checkout.value) {
+    alert("Please select both your check-in and check-out dates.");
+    return;
+  }
+
+  const checkinDate = new Date(checkin.value + "T00:00:00");
+  const checkoutDate = new Date(checkout.value + "T00:00:00");
+
+  if (checkoutDate <= checkinDate) {
+    alert("Your check-out date must be after your check-in date.");
+    return;
+  }
+
+const phoneValue = document.getElementById("phone") ? document.getElementById("phone").value : "";
+const roomValue = document.getElementById("room") ? document.getElementById("room").value : "";
+const guestCount = document.getElementById("guests") ? document.getElementById("guests").value : "";
+const extraRequests = document.getElementById("requests") ? document.getElementById("requests").value : "";
+
+const waText =
+  "New Booking Request\n" +
+  "Name: " + name + "\n" +
+  "Phone: " + phoneValue + "\n" +
+  "Room: " + roomValue + "\n" +
+  "Check-in: " + checkin.value + "\n" +
+  "Check-out: " + checkout.value + "\n" +
+  "Guests: " + guestCount + "\n" +
+  "Requests: " + extraRequests;
+alert("Thank you, " + name + "! You will now be sent to WhatsApp to confirm your booking.");
+window.location.href = "https://wa.me/254701920980?text=" + encodeURIComponent(waText);
+
+  bookingForm.reset();
+  checkin.min = formatDate(today);
+  checkout.min = formatDate(today);
+});
+</script></body>
+            </html>
