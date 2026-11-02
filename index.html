@@ -471,7 +471,7 @@ const roomValue = document.getElementById("room") ? document.getElementById("roo
 const guestCount = document.getElementById("guests") ? document.getElementById("guests").value : "";
   const paymentEl = document.getElementById("payment");
 const paymentOption = paymentEl ? paymentEl.value : "deposit";
-const roomPrice = Number(roomValue);
+const roomPrice = Number(String(roomValue).replace(/[^0-9.]/g, ""));
 const timeDifference = checkoutDate - checkinDate;
 const numberOfNights = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
 const totalPrice = roomPrice * numberOfNights;
@@ -489,7 +489,7 @@ const waText =
   "New Booking Request\n" +
   "Name: " + name + "\n" +
   "Phone: " + phoneValue + "\n" +
-  "Room: " + roomValue + "\n" +
+"Room: " + document.getElementById("room").selectedOptions[0].text + "\n" +
   "Check-in: " + checkin.value + "\n" +
   "Check-out: " + checkout.value + "\n" +
   "Guests: " + guestCount + "\n" +
