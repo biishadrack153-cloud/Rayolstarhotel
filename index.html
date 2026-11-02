@@ -469,9 +469,22 @@ bookingForm.addEventListener("submit", function (event) {
 const phoneValue = document.getElementById("phone") ? document.getElementById("phone").value : "";
 const roomValue = document.getElementById("room") ? document.getElementById("room").value : "";
 const guestCount = document.getElementById("guests") ? document.getElementById("guests").value : "";
+  const paymentOption = document.getElementById("payment").value;
+const roomPrice = Number(roomValue);
+const timeDifference = checkoutDate - checkinDate;
+const numberOfNights = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
+const totalPrice = roomPrice * numberOfNights;
+
+const amountToPay = paymentOption === "deposit"
+    ? totalPrice * 0.5
+    : totalPrice;
+
+const paymentText = paymentOption === "deposit"
+    ? "50% Deposit"
+    : "Full Payment";
 const extraRequests = document.getElementById("requests") ? document.getElementById("requests").value : "";
 
-const waText =
+const waText =1582991
   "New Booking Request\n" +
   "Name: " + name + "\n" +
   "Phone: " + phoneValue + "\n" +
@@ -479,13 +492,50 @@ const waText =
   "Check-in: " + checkin.value + "\n" +
   "Check-out: " + checkout.value + "\n" +
   "Guests: " + guestCount + "\n" +
-  "Requests: " + extraRequests;
-alert("Thank you, " + name + "! You will now be sent to WhatsApp to confirm your booking.");
-window.location.href = "https://wa.me/254701920980?text=" + encodeURIComponent(waText);
+  "Requests: " + extraRequests + "\n" +
+"Payment Option: " + paymentText + "\n" +
+"Amount to Pay: KSh " + amountToPay + "\n" +
+"I agree to the booking policy. I will pay to Till " + TILL + " within 2 hours and send the M-Pesa message here.";
 
-  bookingForm.reset();
-  checkin.min = formatDate(today);
-  checkout.min = formatDate(today);
-});
-</script></body>
-            </html>
+    const oldBox = document.getElementById("payBox");
+    if (oldBox) oldBox.remove();
+
+    const box = document.createElement("div");
+    box.id = "payBox";
+    box.style.cssText = "position:fixed;inset:0;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;z-index:9999;padding:16px";
+    box.innerHTML = `
+<div style="background:#fff;color:#222;border-radius:12px;padding:20px;max-width:340px;width:100%;max-height:90vh;overflow:auto;text-align:center;font-family:sans-serif">
+  <h3 style="margin:0 0 8px">Thank you, <span id="payName"></span>!</h3>
+  <p style="margin:0 0 4px">Pay your deposit to reserve your room:</p>
+  <p style="margin:0;font-size:14px">M-Pesa → Lipa na M-Pesa → Buy Goods</p>
+  <p style="font-size:30px;font-weight:bold;margin:8px 0">${TILL}</p>
+  <p style="margin:0 0 8px">Royal Star Hotel</p>
+  <p style="margin:0 0 12px;font-weight:bold">Amount to pay: KSh ${amountToPay}</p>
+  <p style="margin:0 0 12px;font-size:13px;color:#b00020"><b>Pay within 2 hours</b> or your room will be released to other clients.</p>
+  <p style="margin:0 0 14px;font-size:12px;text-align:left;color:#555">
+    <b>Booking policy:</b><br>
+    • Your room is reserved only after we confirm your payment.<br>
+    • Deposit is non-refundable if you cancel less than 48 hours before check-in.<br>
+    • You may change your dates once, with 24 hours' notice.<br>
+    • The balance is paid at check-in.
+  </p>
+  <button id="copyTill" style="width:100%;padding:12px;margin-bottom:8px;border:1px solid #888;background:#fff;border-radius:8px;font-size:16px">Copy Till Number</button>
+  <button id="sendWa" style="width:100%;padding:12px;border:0;background:#25D366;color:#fff;border-radius:8px;font-size:16px">Send booking on WhatsApp</button>
+</div>`;
+    document.body.appendChild(box);
+    box.querySelector("#payName").textContent = name;
+
+    box.querySelector("#copyTill").onclick = function () {
+      if (navigator.clipboard) navigator.clipboard.writeText(TILL);
+      this.textContent = "Copied!";
+    };
+    box.querySelector("#sendWa").onclick = function () {
+      window.location.href = "https://wa.me/254701920980?text=" + encodeURIComponent(waText);
+    };
+      bookingForm.reset();
+    checkin.min = formatDate(today);
+    checkout.min = formatDate(today);
+  });
+</script>
+</body>
+</html>
