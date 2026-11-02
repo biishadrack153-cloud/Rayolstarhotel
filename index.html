@@ -469,7 +469,8 @@ bookingForm.addEventListener("submit", function (event) {
 const phoneValue = document.getElementById("phone") ? document.getElementById("phone").value : "";
 const roomValue = document.getElementById("room") ? document.getElementById("room").value : "";
 const guestCount = document.getElementById("guests") ? document.getElementById("guests").value : "";
-  const paymentOption = document.getElementById("payment").value;
+  const paymentEl = document.getElementById("payment");
+const paymentOption = paymentEl ? paymentEl.value : "deposit";
 const roomPrice = Number(roomValue);
 const timeDifference = checkoutDate - checkinDate;
 const numberOfNights = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
